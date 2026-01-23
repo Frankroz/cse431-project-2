@@ -5,9 +5,9 @@
     "description": "A full CRUD API for managing Authors and Books",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse431-project-2.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
