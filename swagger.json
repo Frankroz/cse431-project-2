@@ -27,7 +27,11 @@
             "schema": { "$ref": "#/definitions/Author" }
           }
         ],
-        "responses": { "201": { "description": "Author Created" } }
+        "responses": {
+          "201": { "description": "Author Created" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       }
     },
     "/authors/{id}": {
@@ -50,7 +54,11 @@
             "schema": { "$ref": "#/definitions/Author" }
           }
         ],
-        "responses": { "204": { "description": "Updated" } }
+        "responses": {
+          "204": { "description": "Updated" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       },
       "delete": {
         "tags": ["Authors"],
@@ -58,7 +66,11 @@
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
-        "responses": { "204": { "description": "Deleted" } }
+        "responses": {
+          "204": { "description": "Deleted" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       }
     },
     "/books": {
@@ -77,7 +89,10 @@
             "schema": { "$ref": "#/definitions/Book" }
           }
         ],
-        "responses": { "201": { "description": "Book Created" } }
+        "responses": {
+          "201": { "description": "Book Created" },
+          "404": { "description": "Not found" }
+        }
       }
     },
     "/books/{id}": {
@@ -87,7 +102,11 @@
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
-        "responses": { "200": { "description": "Success" } }
+        "responses": {
+          "200": { "description": "Success" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       },
       "put": {
         "tags": ["Books"],
@@ -100,7 +119,11 @@
             "schema": { "$ref": "#/definitions/Book" }
           }
         ],
-        "responses": { "204": { "description": "Updated" } }
+        "responses": {
+          "204": { "description": "Updated" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       },
       "delete": {
         "tags": ["Books"],
@@ -108,7 +131,11 @@
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
-        "responses": { "204": { "description": "Deleted" } }
+        "responses": {
+          "204": { "description": "Deleted" },
+          "400": { "description": "Missing data" },
+          "500": { "description": "Server error" }
+        }
       }
     }
   },
