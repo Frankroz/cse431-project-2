@@ -1,0 +1,137 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Library API",
+    "description": "A full CRUD API for managing Authors and Books",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/authors": {
+      "get": {
+        "tags": ["Authors"],
+        "description": "Get all authors in the database",
+        "responses": { "200": { "description": "Success" } }
+      },
+      "post": {
+        "tags": ["Authors"],
+        "description": "Create a new author",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/Author" }
+          }
+        ],
+        "responses": { "201": { "description": "Author Created" } }
+      }
+    },
+    "/authors/{id}": {
+      "get": {
+        "tags": ["Authors"],
+        "description": "Get a specific author by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      },
+      "put": {
+        "tags": ["Authors"],
+        "description": "Update an existing author by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/Author" }
+          }
+        ],
+        "responses": { "204": { "description": "Updated" } }
+      },
+      "delete": {
+        "tags": ["Authors"],
+        "description": "Delete an author by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": { "204": { "description": "Deleted" } }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": ["Books"],
+        "description": "Get all books in the database",
+        "responses": { "200": { "description": "Success" } }
+      },
+      "post": {
+        "tags": ["Books"],
+        "description": "Create a new book entry",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/Book" }
+          }
+        ],
+        "responses": { "201": { "description": "Book Created" } }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "tags": ["Books"],
+        "description": "Get a specific book by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      },
+      "put": {
+        "tags": ["Books"],
+        "description": "Update an existing book by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/Book" }
+          }
+        ],
+        "responses": { "204": { "description": "Updated" } }
+      },
+      "delete": {
+        "tags": ["Books"],
+        "description": "Delete a book by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": { "204": { "description": "Deleted" } }
+      }
+    }
+  },
+  "definitions": {
+    "Author": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email"],
+      "properties": {
+        "firstName": { "type": "string", "example": "J.K." },
+        "lastName": { "type": "string", "example": "Rowling" },
+        "nationality": { "type": "string", "example": "British" },
+        "email": { "type": "string", "example": "jk@hogwarts.com" }
+      }
+    },
+    "Book": {
+      "type": "object",
+      "required": ["title", "author", "isbn"],
+      "properties": {
+        "title": { "type": "string", "example": "Harry Potter" },
+        "author": { "type": "string", "example": "J.K. Rowling" },
+        "isbn": { "type": "string", "example": "978-0439708180" },
+        "pages": { "type": "integer", "example": 309 }
+      }
+    }
+  }
+}
