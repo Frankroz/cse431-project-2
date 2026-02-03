@@ -11,6 +11,24 @@
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
+    "/login": {
+      "get": {
+        "tags": ["Authentication"],
+        "description": "Initiate the GitHub OAuth login flow",
+        "responses": {
+          "200": { "description": "Redirecting to GitHub" }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": ["Authentication"],
+        "description": "Log out of the current session",
+        "responses": {
+          "200": { "description": "Successfully logged out" }
+        }
+      }
+    },
     "/authors": {
       "get": {
         "tags": ["Authors"],
@@ -19,7 +37,7 @@
       },
       "post": {
         "tags": ["Authors"],
-        "description": "Create a new author",
+        "description": "Create a new author (Requires Authorization)",
         "parameters": [
           {
             "name": "body",
@@ -29,6 +47,7 @@
         ],
         "responses": {
           "201": { "description": "Author Created" },
+          "401": { "description": "Unauthorized - Login required" },
           "400": { "description": "Missing data" },
           "500": { "description": "Server error" }
         }
@@ -45,7 +64,7 @@
       },
       "put": {
         "tags": ["Authors"],
-        "description": "Update an existing author by ID",
+        "description": "Update an existing author by ID (Requires Authorization)",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
           {
@@ -56,18 +75,20 @@
         ],
         "responses": {
           "204": { "description": "Updated" },
+          "401": { "description": "Unauthorized - Login required" },
           "400": { "description": "Missing data" },
           "500": { "description": "Server error" }
         }
       },
       "delete": {
         "tags": ["Authors"],
-        "description": "Delete an author by ID",
+        "description": "Delete an author by ID (Requires Authorization)",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
           "204": { "description": "Deleted" },
+          "401": { "description": "Unauthorized - Login required" },
           "400": { "description": "Missing data" },
           "500": { "description": "Server error" }
         }
@@ -81,7 +102,7 @@
       },
       "post": {
         "tags": ["Books"],
-        "description": "Create a new book entry",
+        "description": "Create a new book entry (Requires Authorization)",
         "parameters": [
           {
             "name": "body",
@@ -91,6 +112,7 @@
         ],
         "responses": {
           "201": { "description": "Book Created" },
+          "401": { "description": "Unauthorized - Login required" },
           "404": { "description": "Not found" }
         }
       }
@@ -110,7 +132,7 @@
       },
       "put": {
         "tags": ["Books"],
-        "description": "Update an existing book by ID",
+        "description": "Update an existing book by ID (Requires Authorization)",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
           {
@@ -121,18 +143,20 @@
         ],
         "responses": {
           "204": { "description": "Updated" },
+          "401": { "description": "Unauthorized - Login required" },
           "400": { "description": "Missing data" },
           "500": { "description": "Server error" }
         }
       },
       "delete": {
         "tags": ["Books"],
-        "description": "Delete a book by ID",
+        "description": "Delete a book by ID (Requires Authorization)",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
           "204": { "description": "Deleted" },
+          "401": { "description": "Unauthorized - Login required" },
           "400": { "description": "Missing data" },
           "500": { "description": "Server error" }
         }
